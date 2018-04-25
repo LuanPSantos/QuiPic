@@ -1,4 +1,5 @@
 import { NgModule, ErrorHandler } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
@@ -11,17 +12,23 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+//Components
+import { PostComponent } from './post/post.component';
+import { PostService } from './http-services/post.service';
+
 @NgModule({
   declarations: [
     MyApp,
     ProfilePage,
     PeoplePage,
     HomePage,
-    TabsPage
+    TabsPage,
+    PostComponent
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -29,12 +36,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ProfilePage,
     PeoplePage,
     HomePage,
-    TabsPage
+    TabsPage,
+    PostComponent
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    PostService
   ]
 })
 export class AppModule {}

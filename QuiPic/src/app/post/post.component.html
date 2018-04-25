@@ -1,0 +1,30 @@
+<ion-card>
+  <!-- imagem do post -->
+  <img [src]="post.image" />
+  
+  <ion-card-content>
+    <!-- Perfil -->
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="post.user.image">
+      </ion-avatar>
+      {{post.user.name}}
+    </ion-item>
+
+    <!-- Likes e comentários -->
+    <ion-item>
+      <p item-end>{{post.likes}}</p>
+      <button clear="true" ion-button icon-only item-end (click)="toggleLike()">
+          <ion-icon name="heart" [color]="likeColor" ></ion-icon>
+      </button>      
+
+      <span class="spacer" item-end></span>
+
+      <p item-end>{{post.comments.length}}</p>
+      <button clear="true" ion-button icon-only item-end>
+          <ion-icon name="chatboxes" color="dark"></ion-icon>
+      </button>      
+    </ion-item>
+ 
+  </ion-card-content>
+</ion-card>
