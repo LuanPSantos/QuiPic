@@ -14,4 +14,12 @@ export class PostService {
   getAllPosts(): Observable<any[]>{
     return this.http.get<any[]>(this.BASE_URL + '/posts');
   }
+
+  getPost(id: string): Observable<any>{
+    return this.http.get<any>(this.BASE_URL + '/posts/' + id);
+  }
+
+  getAllComments(id: string): Observable<any>{
+    return this.http.get<any>(this.BASE_URL + '/comments/');
+  }
 }

@@ -1,0 +1,6 @@
+<ion-item no-lines>
+  <p item-end>{{post?.likes}}</p>
+  <button clear="true" ion-button icon-only item-end (click)="toggleLike()">
+    <ion-icon name="heart" [color]="likeColor"></ion-icon>
+  </button>
+</ion-item>
