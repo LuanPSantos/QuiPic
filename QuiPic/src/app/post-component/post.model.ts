@@ -4,5 +4,5 @@ export class Post {
   public image: string;
   public date: any;
   public likes: number;
-  public comments: any[];
+  public commentsCount: number;
 }

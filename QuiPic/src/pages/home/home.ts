@@ -1,23 +1,31 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { PostService } from '../../app/http-services/post.service';
-import { Post } from '../../app/post/post.model';
+import { Post } from '../../app/post-component/post.model';
 
+@IonicPage()
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
 })
 export class HomePage {
 
   posts: Post[] = [];
 
-  constructor(public navCtrl: NavController, private postService: PostService) {
-
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    private postService: PostService
+  ) {
   }
 
-  ngOnInit() {
+  ionViewWillEnter () {
     this.postService.getAllPosts().subscribe((posts) => {
       this.posts = posts;
     });
+  }
+
+  ngOnInit() {
+
   }
 }

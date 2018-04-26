@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Post } from './post.model';
+import { NavController } from 'ionic-angular';
+import { CommentsPage } from '../../pages/comments/comments';
 
 @Component({
   selector: 'app-post',
@@ -13,7 +15,7 @@ export class PostComponent {
   isLiked: boolean = false;
   likeColor: string = 'dark';
 
-  constructor() {
+  constructor(private navCtrl: NavController) {
     
   }
 
@@ -26,6 +28,10 @@ export class PostComponent {
     this.likeColor = this.isLiked ? 'danger' : 'dark';
     //mudar para backend
     this.isLiked ? this.post.likes += 1 : this.post.likes -= 1;
+  }
+
+  openComments(){
+    this.navCtrl.push(CommentsPage, {postId: this.post.id});
   }
 }
 

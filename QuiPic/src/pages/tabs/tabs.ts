@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
-
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ProfilePage } from '../profile/profile';
-import { PeoplePage } from '../people/people';
 import { HomePage } from '../home/home';
+import { PeoplePage } from '../people/people';
 
+@IonicPage()
 @Component({
-  templateUrl: 'tabs.html'
+  selector: 'page-tabs',
+  templateUrl: 'tabs.html',
 })
 export class TabsPage {
 
@@ -13,7 +15,10 @@ export class TabsPage {
   homePage = HomePage;
   peoplePage = PeoplePage;
 
-  constructor() {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
 
+  ionViewWillEnter () {
+    console.log('TabsPage');
   }
 }

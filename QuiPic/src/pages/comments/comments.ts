@@ -3,16 +3,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-people',
-  templateUrl: 'people.html',
+  selector: 'page-comments',
+  templateUrl: 'comments.html',
 })
-export class PeoplePage {
+export class CommentsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewWillEnter () {
-    console.log('PeoplePage');
+    console.log('CommentsPage');
   }
 
 }

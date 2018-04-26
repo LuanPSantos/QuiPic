@@ -20,8 +20,8 @@
 
       <span class="spacer" item-end></span>
 
-      <p item-end>{{post.comments.length}}</p>
-      <button clear="true" ion-button icon-only item-end>
+      <p item-end>{{post.commentsCount}}</p>
+      <button clear="true" ion-button icon-only item-end (click)="openComments()">
           <ion-icon name="chatboxes" color="dark"></ion-icon>
       </button>      
     </ion-item>
