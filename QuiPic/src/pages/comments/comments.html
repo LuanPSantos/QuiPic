@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>comments</ion-title>
+    <ion-title>Comments</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -10,12 +10,17 @@
   <img [src]="post.image" />
   <app-like [post]="post"></app-like>
 
-
-  <ion-input placeholder="É só digitar..."></ion-input>
-  <button ion-button float-right color="primary">Comentar</button>
+  <form [formGroup]="formComments">
+    <ion-input placeholder="É só digitar..." formControlName="commentMessage"></ion-input>
+    <button ion-button float-right color="primary" (click)="addComment()" [disabled]="!formComments.valid">Comentar</button>
+  </form>
 
   <div *ngFor="let comment of comments">
-    <app-picture-name [user]="comment.user"></app-picture-name>
-    <p class="comment-message">{{comment.message}}</p>
+    <ion-item no-lines>
+      <ion-avatar item-start>
+        <img [src]="comment.user?.image">
+      </ion-avatar>
+      <p class="comment-message">{{comment.message}}</p>
+    </ion-item>
   </div>
 </ion-content>

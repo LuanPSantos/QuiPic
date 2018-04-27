@@ -14,6 +14,7 @@ import { HomePageModule } from '../pages/home/home.module';
 import { PeoplePageModule } from '../pages/people/people.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
 import { TabsPageModule } from '../pages/tabs/tabs.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import { TabsPageModule } from '../pages/tabs/tabs.module';
     HomePageModule,
     PeoplePageModule,
     ProfilePageModule,
-    TabsPageModule
+    TabsPageModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

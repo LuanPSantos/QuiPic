@@ -8,7 +8,9 @@ import { NavController } from 'ionic-angular';
 export class PictureNameComponent {
 
   @Input()
-  user: any;
+  image: string;
+  @Input()
+  name: string;
 
   constructor(private navCtrl: NavController) {
     

@@ -3,22 +3,22 @@
 
   <ion-card-content>
     <!-- Perfil -->
-    <app-picture-name [user]="post.user"></app-picture-name>
+    <app-picture-name [name]="post.user?.name" [image]="post.user?.image"></app-picture-name>
 
     <!-- imagem do post -->
     <img [src]="post.image" />
 
     <!-- Likes e comentários -->
     <ion-item no-lines>
-      <p item-end>{{post.likes}}</p>
-      <button clear="true" ion-button icon-only item-end (click)="toggleLike()">
+      <span item-start>{{post.likes}}</span>
+      <button clear="true" ion-button icon-only item-start (click)="toggleLike()">
         <ion-icon name="heart" [color]="likeColor"></ion-icon>
       </button>
 
-      <span class="spacer" item-end></span>
+      <span class="spacer" item-start></span>
 
-      <p item-end>{{post.commentsCount}}</p>
-      <button clear="true" ion-button icon-only item-end (click)="openComments()">
+      <span item-start>{{post.commentsCount}}</span>
+      <button clear="true" ion-button icon-only item-start (click)="openComments()">
         <ion-icon name="chatboxes" color="dark"></ion-icon>
       </button>
     </ion-item>
