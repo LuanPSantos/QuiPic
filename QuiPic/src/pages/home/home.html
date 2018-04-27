@@ -8,6 +8,6 @@
 
 
 <ion-content>
-  <button ion-button class="round-button"><ion-icon name="add"></ion-icon></button>
-  <app-post *ngFor="let p of posts" [post]="p"></app-post>
+  <button ion-button class="round-button" (click)="openNewPost()"><ion-icon name="add"></ion-icon></button>
+  <app-post (commentsClick)="onCommentsClick(p.id)" *ngFor="let p of posts" [post]="p"></app-post>
 </ion-content>

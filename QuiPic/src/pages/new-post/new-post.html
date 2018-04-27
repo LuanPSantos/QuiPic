@@ -1,0 +1,23 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>new-post</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+    <ion-item no-lines>
+      <ion-label floating >URL da imagem</ion-label>
+      <ion-input type="text" [(ngModel)]="url" clearInput="true"></ion-input>
+    </ion-item>
+  
+    <img *ngIf="url" [src]="url" />
+
+    <button ion-button float-right color="primary" (click)="post()">Postar</button>
+    
+
+</ion-content>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Post } from './post.model';
 import { NavController } from 'ionic-angular';
 import { CommentsPage } from '../../pages/comments/comments';
@@ -11,6 +11,8 @@ export class PostComponent {
 
   @Input()
   post: Post;
+  @Output()
+  commentsClick: EventEmitter<any> = new EventEmitter();
 
   isLiked: boolean = false;
   likeColor: string = 'dark';
@@ -31,7 +33,7 @@ export class PostComponent {
   }
 
   openComments(){
-    this.navCtrl.push(CommentsPage, {postId: this.post.id});
+    this.commentsClick.emit(this.post.id);
   }
 }
 

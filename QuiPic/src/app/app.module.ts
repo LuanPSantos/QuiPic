@@ -15,6 +15,7 @@ import { PeoplePageModule } from '../pages/people/people.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
 import { TabsPageModule } from '../pages/tabs/tabs.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NewPostPageModule } from '../pages/new-post/new-post.module';
 
 @NgModule({
   declarations: [
@@ -24,10 +25,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-    CommentsPageModule,
-    HomePageModule,
-    PeoplePageModule,
-    ProfilePageModule,
     TabsPageModule,
     FormsModule,
     ReactiveFormsModule
