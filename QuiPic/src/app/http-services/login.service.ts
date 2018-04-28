@@ -9,7 +9,7 @@ import { NavController } from 'ionic-angular';
 @Injectable()
 export class LoginService {
 
-    BASE_URL = 'http://localhost:3000';
+    BASE_URL = 'http://192.168.15.8:3000';
 
     constructor(
         private http: HttpClient,

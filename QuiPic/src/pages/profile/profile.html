@@ -1,8 +1,7 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>profile</ion-title>
-    <button ion-button (click)="logout()">
+  <ion-navbar color="primary">
+    <button ion-button float-right (click)="logout()" color="secondary">
       Sair
     </button>
   </ion-navbar>
@@ -11,5 +10,13 @@
 
 
 <ion-content padding>
-
+  <div class="profile-image" [ngStyle]="{'background-image': 'url(' + user?.image + ')'}"></div>
+  <p class="profile-name">{{user?.name}}</p>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="padding-post-image" *ngFor="let post of posts" col-4>
+        <div (click)="openComments(post.id)" class="post-image" [ngStyle]="{'background-image': 'url(' + post?.image + ')'}"></div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

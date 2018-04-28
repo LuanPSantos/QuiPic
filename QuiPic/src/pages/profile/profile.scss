@@ -1,3 +1,31 @@
 page-profile {
+    .profile-image{
+        height: 90px;
+        width: 90px;
+        border-radius: 50%;
+        margin: 0 auto;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        background-position: center;
+        background-size: auto 90px;
+        background-repeat: no-repeat;
+    }
 
+    .profile-name{
+        font-size: 18pt;
+        text-align: center
+    }
+
+    .post-image{
+        height: 80px;
+        width: 100%;
+        border-radius: 2px;
+        background-position: center;
+        background-size: auto 100%;
+        background-repeat: no-repeat;
+    }
+
+    .padding-post-image{
+        padding: 1px;
+    }
 }
