@@ -16,6 +16,10 @@ import { ProfilePageModule } from '../pages/profile/profile.module';
 import { TabsPageModule } from '../pages/tabs/tabs.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NewPostPageModule } from '../pages/new-post/new-post.module';
+import { LoginPageModule } from '../pages/login/login.module';
+import { UserService } from './http-services/user.service';
+import { StorageServie } from './http-services/storage.service';
+import { LoginService } from './http-services/login.service';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,7 @@ import { NewPostPageModule } from '../pages/new-post/new-post.module';
     IonicModule.forRoot(MyApp),
     HttpClientModule,
     TabsPageModule,
+    LoginPageModule,
     FormsModule,
     ReactiveFormsModule
   ],
@@ -37,7 +42,10 @@ import { NewPostPageModule } from '../pages/new-post/new-post.module';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    PostService
+    PostService,
+    UserService,
+    StorageServie,
+    LoginService
   ]
 })
 export class AppModule {}

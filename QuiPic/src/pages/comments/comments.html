@@ -7,7 +7,9 @@
 </ion-header>
 
 <ion-content padding>
-  <img [src]="post.image" />
+  <div class="image-container">
+    <img [src]="post.image" />
+  </div>
   <app-like [post]="post"></app-like>
 
   <form [formGroup]="formComments">

@@ -6,7 +6,9 @@
     <app-picture-name [name]="post.user?.name" [image]="post.user?.image"></app-picture-name>
 
     <!-- imagem do post -->
-    <img [src]="post.image" />
+    <div class="image-container">
+      <img [src]="post.image" />
+    </div>
 
     <!-- Likes e comentários -->
     <ion-item no-lines>

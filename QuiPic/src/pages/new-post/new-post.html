@@ -15,7 +15,9 @@
       <ion-input type="text" [(ngModel)]="url" clearInput="true"></ion-input>
     </ion-item>
   
-    <img *ngIf="url" [src]="url" />
+    <div class="image-container">
+      <img *ngIf="url" [src]="url" />
+    </div>
 
     <button ion-button float-right color="primary" (click)="post()">Postar</button>
     

@@ -23,12 +23,11 @@ export class HomePage {
 
   ionViewWillEnter () {
     this.postService.getAllPosts().subscribe((posts) => {
-      this.posts = posts;
+      this.posts = this.sortPosts(posts);
     });
   }
 
   ngOnInit() {
-
   }
 
   openNewPost(){
@@ -37,5 +36,17 @@ export class HomePage {
 
   onCommentsClick(postId){
     this.navCtrl.push(CommentsPage, {postId: postId});
+  }
+
+  sortPosts(posts: Post[]): Post[] {
+    return posts.sort((a, b) => {
+      if (a.date > b.date) {
+        return 1;
+      }
+      if (a.date < b.date) {
+        return -1
+      }
+      return 0;
+    }).reverse();
   }
 }

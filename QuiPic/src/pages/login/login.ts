@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { NewRegisterPage } from '../new-register/new-register';
+import { LoginService } from '../../app/http-services/login.service';
+import { HomePage } from '../home/home';
+import { UserService } from '../../app/http-services/user.service';
+import { StorageServie } from '../../app/http-services/storage.service';
+import { TabsPage } from '../tabs/tabs';
 
 @IonicPage()
 @Component({
@@ -15,11 +14,31 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  email: string;
+  password: string;
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    private userService: UserService,
+    private storageService: StorageServie
+  ) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+  }
+
+  openRegister() {
+    this.navCtrl.push(NewRegisterPage);
+  }
+
+  login() {
+    this.userService.getUser(this.email, this.password).subscribe((user) => {
+      if(user[0]){
+        this.storageService.saveUser(user[0]);
+        this.navCtrl.setRoot(TabsPage);
+      }
+    });
   }
 
 }

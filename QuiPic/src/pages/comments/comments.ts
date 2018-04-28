@@ -4,6 +4,8 @@ import { PostService } from '../../app/http-services/post.service';
 import { Post } from '../../app/post-component/post.model';
 import { Comment } from '../../app/post-component/comment.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { TempUtil } from '../../app/models/temp.util';
+import { StorageServie } from '../../app/http-services/storage.service';
 
 @IonicPage()
 @Component({
@@ -20,7 +22,8 @@ export class CommentsPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     private postService: PostService,
-    fb: FormBuilder
+    fb: FormBuilder,
+    private storageService: StorageServie
   ) {
     this.formComments = fb.group({
       commentMessage: ['', Validators.maxLength(64)]
@@ -40,16 +43,11 @@ export class CommentsPage {
 
   addComment() {
     const comment: Comment = new Comment();
-    comment.id =  Math.random(); //TODO remover 
+    comment.id = new TempUtil().createId(); //TODO remover 
     comment.date = new Date();
     comment.message = this.formComments.get('commentMessage').value;
     comment.post = this.post;
-    comment.user = { // TODO criar Classe User e pegar o user logado
-      name: "Morgana",
-      id: 1,
-      email: "morgana@email.com",
-      image: "https://www.mobafire.com/images/avatars/morgana-bewitching.png"
-    }
+    comment.user = this.storageService.getUser();
 
     if(!comment.message){
       return;
