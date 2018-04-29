@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
@@ -11,6 +11,8 @@ export class PictureNameComponent {
   image: string;
   @Input()
   name: string;
+  @Output()
+  nameClick: EventEmitter<any> = new EventEmitter();
 
   constructor(private navCtrl: NavController) {
     
@@ -18,5 +20,9 @@ export class PictureNameComponent {
 
   ngOnInit(){
 
+  }
+
+  onNameClick(){
+    this.nameClick.emit();
   }
 }

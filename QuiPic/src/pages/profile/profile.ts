@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { StorageServie } from '../../app/http-services/storage.service';
 import { LoginPage } from '../login/login';
 import { User } from '../../app/models/user.model';
@@ -23,12 +23,13 @@ export class ProfilePage {
     public navParams: NavParams,
     private storageService: StorageServie,
     private userService: UserService,
-    private postService: PostService
+    private postService: PostService,
+    private app: App
   ) {
   }
 
   ngOnInit(){
-    this.user = this.storageService.getUser();
+    this.loadUserToShow();
   }
 
   ionViewWillEnter () {
@@ -39,7 +40,7 @@ export class ProfilePage {
 
   logout(){
     this.storageService.removeUser();
-    this.navCtrl.setRoot(LoginPage)
+    this.app.getRootNav().setRoot(LoginPage);
   }
 
   sortPosts(posts: Post[]): Post[] {
@@ -56,6 +57,19 @@ export class ProfilePage {
 
   openComments(id: string){
     this.navCtrl.push(CommentsPage, {postId: id});
+  }
+
+  loadUserToShow(){
+    let userId = this.navParams.get('userId');
+
+    if(userId){
+      this.userService.getUserById(userId).subscribe((user)=> {
+        console.log(user);
+        this.user = user[0];
+      });
+    }else{
+      this.user = this.storageService.getUser();
+    }
   }
 
 }

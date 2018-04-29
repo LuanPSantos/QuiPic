@@ -6,7 +6,7 @@ import { User } from '../models/user.model';
 @Injectable()
 export class UserService {
 
-    BASE_URL = 'http://192.168.15.8:3000';
+    BASE_URL = 'http://localhost:3000';
 
     constructor(
         private http: HttpClient
@@ -21,5 +21,14 @@ export class UserService {
     public getUser(email: string, password: string): Observable<any> {
         return this.http
         .get(this.BASE_URL + '/users?email=' + email + '&password=' + password);
+    }
+
+    public getUsersFriends(id: string): Observable<User[]> {
+        return this.http.get<User[]>(this.BASE_URL + '/users');
+    }
+
+    public getUserById(id: string): Observable<any> {
+        return this.http
+        .get(this.BASE_URL + '/users?id=' + id);
     }
 }

@@ -4,6 +4,7 @@ import { PostService } from '../../app/http-services/post.service';
 import { Post } from '../../app/post-component/post.model';
 import { NewPostPage } from '../new-post/new-post';
 import { CommentsPage } from '../comments/comments';
+import { ProfilePage } from '../profile/profile';
 
 @IonicPage()
 @Component({
@@ -36,6 +37,10 @@ export class HomePage {
 
   onCommentsClick(postId){
     this.navCtrl.push(CommentsPage, {postId: postId});
+  }
+
+  onNameClick(userId){
+    this.navCtrl.push(ProfilePage, {userId: userId});
   }
 
   sortPosts(posts: Post[]): Post[] {

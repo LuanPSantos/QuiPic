@@ -3,7 +3,7 @@
 
   <ion-card-content>
     <!-- Perfil -->
-    <app-picture-name [name]="post.user?.name" [image]="post.user?.image"></app-picture-name>
+    <app-picture-name (nameClick)="onNameClick()" [name]="post.user?.name" [image]="post.user?.image"></app-picture-name>
 
     <!-- imagem do post -->
     <div class="image-container">

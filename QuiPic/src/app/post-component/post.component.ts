@@ -13,6 +13,8 @@ export class PostComponent {
   post: Post;
   @Output()
   commentsClick: EventEmitter<any> = new EventEmitter();
+  @Output()
+  nameClick: EventEmitter<any> = new EventEmitter();
 
   isLiked: boolean = false;
   likeColor: string = 'dark';
@@ -34,6 +36,10 @@ export class PostComponent {
 
   openComments(){
     this.commentsClick.emit(this.post.id);
+  }
+
+  onNameClick(){
+    this.nameClick.emit(this.post.user.id);
   }
 }
 
