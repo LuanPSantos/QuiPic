@@ -18,7 +18,7 @@
 
   <div *ngFor="let comment of comments">
     <ion-item no-lines>
-      <ion-avatar item-start>
+      <ion-avatar item-start item-start (click)="onNameClick()">
         <img [src]="comment.user?.image">
       </ion-avatar>
       <p class="comment-message">{{comment.message}}</p>

@@ -11,6 +11,6 @@
   </ion-searchbar>
 
   <ion-list>
-    <app-user-item [user]="u" *ngFor="let u of listUser"></app-user-item>
+    <app-user-item [user]="u" *ngFor="let u of listUser" (nameClick)="onNameClick(u.id)" (toggleFollow)="onToggleFollow(u.id)"></app-user-item>
   </ion-list>
 </ion-content>

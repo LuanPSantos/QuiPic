@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { UserItem } from './user-item.model';
 
 @Component({
@@ -9,10 +9,22 @@ export class UserItemComponent {
 
     @Input()
     user: UserItem;
+    @Output()
+    nameClick: EventEmitter<any> = new EventEmitter();
+    @Output()
+    toggleFollow: EventEmitter<any> = new EventEmitter();
 
     constructor(
     ) {
 
+    }
+
+    onNameClick(){
+        this.nameClick.emit();
+    }
+
+    toggleFollowClick(){
+        this.toggleFollow.emit();
     }
 
 }

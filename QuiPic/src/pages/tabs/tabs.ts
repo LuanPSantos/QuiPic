@@ -19,6 +19,5 @@ export class TabsPage {
   }
 
   ionViewWillEnter () {
-    console.log('TabsPage');
   }
 }

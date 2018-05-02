@@ -6,6 +6,7 @@ import { Comment } from '../../app/post-component/comment.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TempUtil } from '../../app/models/temp.util';
 import { StorageServie } from '../../app/http-services/storage.service';
+import { ProfilePage } from '../profile/profile';
 
 @IonicPage()
 @Component({
@@ -75,6 +76,10 @@ export class CommentsPage {
 
   ionViewWillEnter() {
     
+  }
+
+  onNameClick(userId){
+    this.navCtrl.push(ProfilePage, {userId: userId});
   }
 
 }

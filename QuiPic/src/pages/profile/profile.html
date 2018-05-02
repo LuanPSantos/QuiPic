@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <button ion-button float-right (click)="logout()" color="secondary">
+    <button *ngIf="isLoggedUser()" ion-button float-right (click)="logout()" color="secondary">
       Sair
     </button>
   </ion-navbar>

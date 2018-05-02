@@ -1,5 +1,5 @@
 <ion-item no-lines>
-  <ion-avatar item-start>
+  <ion-avatar item-start item-start (click)="onNameClick()">
     <img [src]="image">
   </ion-avatar>
   <p (click)="onNameClick()">{{name}}</p>

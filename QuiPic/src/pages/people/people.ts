@@ -4,6 +4,7 @@ import { UserService } from '../../app/http-services/user.service';
 import { StorageServie } from '../../app/http-services/storage.service';
 import { User } from '../../app/models/user.model';
 import { UserItem } from './user-item.model';
+import { ProfilePage } from '../profile/profile';
 
 @IonicPage()
 @Component({
@@ -47,6 +48,14 @@ export class PeoplePage {
 
   onSearch(event){
     // TODO 
+  }
+
+  onNameClick(userId){
+    this.navCtrl.push(ProfilePage, {userId: userId});
+  }
+
+  onToggleFollow(id){
+    console.log(id);
   }
 }
 

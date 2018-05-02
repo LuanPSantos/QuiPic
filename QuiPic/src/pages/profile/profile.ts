@@ -19,7 +19,7 @@ export class ProfilePage {
   posts: Post[] = [];
 
   constructor(
-    public navCtrl: NavController, 
+    public navCtrl: NavController,
     public navParams: NavParams,
     private storageService: StorageServie,
     private userService: UserService,
@@ -28,17 +28,15 @@ export class ProfilePage {
   ) {
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.loadUserToShow();
   }
 
-  ionViewWillEnter () {
-   this.postService.getAllUserPosts(this.user.id.toString()).subscribe((posts)=> {
-     this.posts = this.sortPosts(posts);
-   });
+  ionViewWillEnter() {
+    this.loadPosts();
   }
 
-  logout(){
+  logout() {
     this.storageService.removeUser();
     this.app.getRootNav().setRoot(LoginPage);
   }
@@ -55,21 +53,38 @@ export class ProfilePage {
     }).reverse();
   }
 
-  openComments(id: string){
-    this.navCtrl.push(CommentsPage, {postId: id});
+  openComments(id: string) {
+    this.navCtrl.push(CommentsPage, { postId: id });
   }
 
-  loadUserToShow(){
+  loadUserToShow() {
     let userId = this.navParams.get('userId');
 
-    if(userId){
-      this.userService.getUserById(userId).subscribe((user)=> {
-        console.log(user);
+    if (userId) {
+      this.userService.getUserById(userId).subscribe((user) => {
         this.user = user[0];
       });
-    }else{
+    } else {
       this.user = this.storageService.getUser();
     }
+  }
+
+  loadPosts() {
+    this.postService.getAllUserPosts(this.user.id.toString()).subscribe((posts) => {
+      this.posts = this.sortPosts(posts);
+    });
+  }
+
+  isLoggedUser(): boolean {
+    let user = this.storageService.getUser();
+    if (user) {
+      let userIdFromStorage = user.id;
+      let userIdFromNav = this.navParams.get('userId');
+
+      return userIdFromStorage == userIdFromNav || !userIdFromNav;
+    }
+
+    return false;
   }
 
 }

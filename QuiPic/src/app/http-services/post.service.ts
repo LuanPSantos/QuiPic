@@ -7,7 +7,7 @@ import { Post } from '../post-component/post.model';
 @Injectable()
 export class PostService {
 
-  BASE_URL = 'http://localhost:3000';
+  BASE_URL = 'http://192.168.11.2:3000';
 
   constructor(
     private http: HttpClient){

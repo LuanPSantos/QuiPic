@@ -1,7 +1,7 @@
 <ion-item no-lines>
-    <ion-avatar item-start>
+    <ion-avatar item-start (click)="onNameClick()">
         <img [src]="user?.image">
     </ion-avatar>
-    <p>{{user?.name}}</p>
-    <button ion-button color="primary" item-end (click)="toggleFllowClick()">{{user?.buttonLabel}}</button>
+    <p (click)="onNameClick()">{{user?.name}}</p>
+    <button ion-button color="primary" item-end (click)="toggleFollowClick()">{{user?.buttonLabel}}</button>
 </ion-item>
