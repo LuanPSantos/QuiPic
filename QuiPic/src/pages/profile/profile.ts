@@ -29,11 +29,11 @@ export class ProfilePage {
   }
 
   ngOnInit() {
-    this.loadUserToShow();
+    
   }
 
   ionViewWillEnter() {
-    this.loadPosts();
+    this.loadUserToShow();
   }
 
   logout() {
@@ -63,9 +63,11 @@ export class ProfilePage {
     if (userId) {
       this.userService.getUserById(userId).subscribe((user) => {
         this.user = user[0];
+        this.loadPosts();
       });
     } else {
       this.user = this.storageService.getUser();
+      this.loadPosts();
     }
   }
 
